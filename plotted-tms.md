@@ -24,3 +24,8 @@ de un ***virtual host*** del tipo puerto (port virtual-host)
 - En /passwd hay otro string que parece estar codificado en base64 (bm90IHRoaXMgZWFzeSA6RA==). Resulta que es el mismo que el anterior
 
 ## servidor en puerto 445
+```
+/management           (Status: 301) [Size: 322] [--> http://10.10.210.74:445/management/]
+```
+Si pinchamos en el boton "login" nos lleva a un formulario de identificacion
+
