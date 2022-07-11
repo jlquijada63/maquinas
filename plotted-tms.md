@@ -27,5 +27,7 @@ de un ***virtual host*** del tipo puerto (port virtual-host)
 ```
 /management           (Status: 301) [Size: 322] [--> http://10.10.210.74:445/management/]
 ```
-Si pinchamos en el boton "login" nos lleva a un formulario de identificacion
+Si pinchamos en el boton "login" nos lleva a un formulario de identificacion. La pagina parece pertenecer a un sistema de administracion de las
+multas de trafico (Traffic Offense Management System). Buscando en exploit-db vemos que este proyecto tiene varias vulnerabilidades. Entre ellas hay
+dos tipo RCE (que es el tipo que se menciona en la presentacion de la maquina)
 
