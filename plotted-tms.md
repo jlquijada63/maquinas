@@ -57,3 +57,13 @@ if(!defined('DB_NAME')) define('DB_NAME',"tms_db");
 ```
 donde podemos ver el usuario y el password:
 tms_user:Password@123
+
+## crontab
+En crontab tenemos una tarea cuyo propietario es plot-admin que se realiza cada segundo y que consiste en ejecutar un script llamado "backup.sh"
+que se encuentra en /var/html/scripts con la suerte de que podemos escribir dentro del directorio scripts y por tanto podemos borrar el 
+backup.sh original y sustituirlo por un backup.sh que contenga un payload para un reversed shell (en este caso mkfifo nc). Con esto 
+obtenemos un shell de plot_admin
+
+## SUID
+Tenemos un suid /usr/bin/doas. Doas es un sustituto de sudo que se configura en un fichero /etc/doas.config. Si vemos este fichero vemos
+que plot-admin puede ejecutar como root el comando openssl
