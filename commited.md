@@ -128,7 +128,7 @@ index 54d0271..0e1d395 100644
      mydb = mysql.connector.connect(
      host="localhost",
      user="root", # Username Goes Here
--    password="flag{a489a9dbf8eb9d37c6e0cc1a92cda17b}" # Password Goes Here
+-    password="flag{HERE_THE_FLAG}" # Password Goes Here
 +    password="" # Password Goes Here
      )
  
@@ -137,7 +137,7 @@ index 54d0271..0e1d395 100644
      mydb = mysql.connector.connect(
      host="localhost",
      user="root", #username Goes here
--    password="flag{a489a9dbf8eb9d37c6e0cc1a92cda17b}", #password Goes here
+-    password="flag{HERE_THE_FLAG}", #password Goes here
 +    password="", #password Goes here
      database="commited"
      )
@@ -146,7 +146,7 @@ index 54d0271..0e1d395 100644
      mydb = mysql.connector.connect(
      host="localhost",
      user="root",
--    password="flag{a489a9dbf8eb9d37c6e0cc1a92cda17b}",
+-    password="flag{HERE_THE_FLAG}",
 +    password="",
      database="commited"
      )
