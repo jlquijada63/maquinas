@@ -59,4 +59,5 @@ Then with john:letmein credentials i can log in ssh and foothold the machine. I 
 # LXD
 LXD es un administrador de Linux Containers (LXC). Un LXC puede entenderse como una VM que utiliza el kernel de linux para funcionar
 Los usuario que pertenecen al grupo LXD (como es el caso) tienen el privilegio de poder crear y ejecutar LXC's. 
-Los pasos a seguir estan muy bien detallados en este [link] (https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/)
+Los pasos a seguir estan muy bien detallados en este 
+[link][(https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/)
