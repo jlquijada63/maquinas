@@ -14,3 +14,6 @@ Para cambiar la configuracion:
 2. En el buscador hay que modificar el siguiente parametro
 
 ![image](https://user-images.githubusercontent.com/70599089/179743096-6be0f2e8-1159-4d5a-add6-f253e64f5b33.png)
+
+y poner el numero de puerto a 22
+(si no existe hay que crearlo)
