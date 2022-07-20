@@ -42,4 +42,5 @@ Leyendo el codigo podemos ver el usuario y el password:
     }
   </script>
   ```
+  Con estas credenciales nos logeamos y conseguimos el flag
   
