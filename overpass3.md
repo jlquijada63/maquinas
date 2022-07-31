@@ -45,5 +45,8 @@ obtener un root. El problema es que desde dentro de la maquina no puedo acceder 
 
 # ssh tunneling
 Puedo intentar hacer un ssh tunneling con la cual acceder al directorio /home/james ya que se que es un archivo compartido nfs y que utiliza el puerto 111 aunque este puerto esta bloqueado por un firewall. Para este necesito:
-1. Establecer una conexion ssh: Esto puedo hacerlo a traves del usuario paradox, creando una private-key y una public.key y traspasando la public key al directorio /home/paradox/.ssh/auto_we
+1. Establecer una conexion ssh: Esto puedo hacerlo a traves del usuario paradox, creando una private-key y una public.key y traspasando la public key al directorio /home/paradox/.ssh/authorized_keys. Para ello en la maquina atacante:
+- $ ssh-keygen -f paradox
+2. copiamos echo "<content of public key>" >> /home/paradox/.ssh/authorized_keys
+  
 
