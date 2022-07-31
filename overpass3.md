@@ -26,4 +26,24 @@ Par. A. Doxx,paradox,ShibesAreGreat123,4111 1111 4555 1142,432
 Muir Land,muirlandoracle,A11D0gsAreAw3s0me,5103 2219 1119 9245,737
 ```
 
+# FTP AUTHENTICATION
+Trato de autentificarme en ftp con las anteriores credenciales pero solo lo logro con paradox. Resulta que puedo subir ficheros a este directorio
+que es el directorio web, luego podre luego ejecutarlos. Puedo subir un reverse shell php (el tipico monkey). Ejecuto el fichero con curl y obtengo
+un shell con el usuario apache (great!). Desde aqui es directo obtener el web-flag
+
+# Escalada privilegios (user paradox)
+Desde el usuario apache escalamos al usuario paradox mediante
+> $ su paradox
+
+Utilizando el mismo password
+
+# user-flag (user james)
+El hint nos dice que el flag de usuario pertenece al usuario **james**, pero no tengo acceso a su directorio. Utilizando alguna de las herramientas
+de enumeracion automatica (lse, linpeas), veo que hay un vector para la escalada de privilegios que es que el directorio /home/james se puede montar 
+como un nfs, es decir es un archivo compartido y como tiene activado el "root-no-squash" puedo subir al directorio /home/james un ejecutable con el cual
+obtener un root. El problema es que desde dentro de la maquina no puedo acceder al directorio /home/james. 
+
+# ssh tunneling
+Puedo intentar hacer un ssh tunneling con la cual acceder al directorio /home/james ya que se que es un archivo compartido nfs y que utiliza el puerto 111 aunque este puerto esta bloqueado por un firewall. Para este necesito:
+1. Establecer una conexion ssh: Esto puedo hacerlo a traves del usuario paradox, creando una private-key y una public.key y traspasando la public key al directorio /home/paradox/.ssh/auto_we
 
