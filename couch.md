@@ -16,4 +16,6 @@ que tenemos que hacer es picar en el _ui. El contenido se puede ver en formato j
 ***secret*** nos encontramos con las credenciales:
 > atena:t4qfzcc4qN##
 
+con estas credenciales podemos log on en ssh y acceder facilmente al user.flag
+
 
