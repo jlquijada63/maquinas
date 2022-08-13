@@ -117,7 +117,6 @@ puede crear "a mano" con un editor de texto, pero es mejor hacerlo con una aplic
   </Directory>
 </Virtualhost>
 ```
-4. apache guarda en el fichero .htpasswd unas credenciales con el esquema anterior (username en plain-text y password en un hash que es una variante de MD5. Si un sitio web esta configurado para para utilizar /.htpasswd cuando alguien intenta acceder al sitio le sale un formulario para acreditarse
 
 ##JtR
 > developers:9972761drmfsls
