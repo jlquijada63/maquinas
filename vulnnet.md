@@ -96,9 +96,28 @@ ataque del tipo LFI
 
 # LFI EXPLOIT
 Explotando la vulnerabilidad anterior podemos ver en 
-> vulnnet.thm/index.php?referer=/etc/apache2/.htpasswd, el siguiente hash
+> vulnnet.thm/index.php?referer=/etc/apache2/.htpasswd, el siguiente hash:
 > developers:$apr1$ntOz2ERF$Sd6FT8YVTValWjL7bJv0P0
-explicacion: apache guarda en el fichero .htpasswd unas credenciales con el esquema anterior (username en plain-text y password en un hash que es una variante de MD5. Si un sitio web esta configurado para para utilizar /.htpasswd cuando alguien intenta acceder al sitio le sale un formulario para acreditarse
+explicacion: Apache se puede confirgurar para que un sitio, un subdominio o un directorio tengan acceso restringido solo a algunos usuarios. Para esto hay que configurarlos. La configuración se realiza en varios pasos:
+1. Se crea un archivo que por convención se llama .htpasswd (aunque en realidad se puede llamar de cualquier manera) donde se guardan las credenciales en forma:
+- username: password
+El username va en texto plano y el password en una variante de MD5 llamada crypt propia de apache. Cada credencial esta en una linea. Este fichero se
+puede crear "a mano" con un editor de texto, pero es mejor hacerlo con una aplicacion especifica (htpasswd) y es mejor guardarlo en un lugar que no sea accesible desde la web. 
+2. Una vez que se ha creado el fichero .htpasswd, debe configurarse el sitio correspondiente que se encuentra en /etc/apache2/sites-available/fichero de la siguiente manera:
+```
+<VirtualHost *:80>
+  ServerAdmin webmaster@localhost
+  DocumentRoot /var/www/html/broadcast
+  ServerName broadcast.vulnnet.thm
+  <Directory "/var/www/html/broadcast">
+        AuthType Basic  # Typo de autenticacion. En este caso Basic
+        AuthName "broadcast area"
+        AuthUserFile /etc/apache2/.htpasswd  # path al fichero donde estan las acreditaciones
+        Requiere valid-user
+  </Directory>
+</Virtualhost>
+```
+4. apache guarda en el fichero .htpasswd unas credenciales con el esquema anterior (username en plain-text y password en un hash que es una variante de MD5. Si un sitio web esta configurado para para utilizar /.htpasswd cuando alguien intenta acceder al sitio le sale un formulario para acreditarse
 
 ##JtR
 > developers:9972761drmfsls
