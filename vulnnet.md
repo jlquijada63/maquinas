@@ -144,5 +144,9 @@ Probamos a registrarnos en ssh como el usuario server-management y nos pide un p
 ssh2john para obtener un hash a partir de la clave privada y luego intentamos crackear el hash con JtR y obtenemos el siguiente:
 > oneTWO3gOyac
 
-que pudiera ser el passphrase que estamos buscando
+que pudiera ser el passphrase que estamos buscando y efectivamente lo es. Asi conseguimos entrar como el usuario **server-management** y conseguimos
+el user.txt de forma inmediata
+
+# ROOT
+Utilizamos la tecnica de cron job con wildcard
 
