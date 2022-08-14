@@ -128,5 +128,21 @@ Vemos que para la version 4.0 hay una vulnerabilidad que nos permite RCE, file u
 
 Optamos por un file upload utilizando un payload tipo pentestmonkey en curl
 > curl -F "file=@pfile.php" -F "plupload=1" -F "name=anyname.php"
-"http://broadcast.vulnnet.thm/actions/beats_uploader.php" http://broadcast.vulnnet.thm -u developers:9972761drmfsls
+"http://broadcast.vulnnet.thm/actions/beats_uploader.php" -u developers:9972761drmfsls
+
+Con esto conseguimos un reverse-shell para el usuario www-data
+
+## ESCALADA DE PRIVILEGIOS
+Utilizando linpeas.sh vemos que existen dos posibles vectores:
+1. Nos permite leer un fichero /var/backups/ssh-backup.tar.gz
+2. cron job para root
+
+### /var/backups/ssh-backup.tar.gz
+Podemos descomprimier este fichero en un directorio que nos permita tambien escribir (como /tmp) ya que necesitamos tambien permiso de escritura
+(descomprimir es leer y escribir). Descomprimiendo el fichero, obtenemos un fichero llamado **id_rsa** que es una clave privada. 
+Probamos a registrarnos en ssh como el usuario server-management y nos pide un passphrase. Intentamos desencriptar y cracker la clave privada con
+ssh2john para obtener un hash a partir de la clave privada y luego intentamos crackear el hash con JtR y obtenemos el siguiente:
+> oneTWO3gOyac
+
+que pudiera ser el passphrase que estamos buscando
 
