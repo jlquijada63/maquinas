@@ -116,3 +116,9 @@ cage@national-treasure:~$ cat Super_Duper_Checklist
 Del directorio personal del usuario cage, podemos obtener su clave privada en /home/cage/.ssh/id_rsa
 con esta clave nos podemos logear directamente en ssh. La clave no contiene passphrase.
 # ROOT
+El vector que vamos a explotar es la pertenencia del usuario cage al grupo lxd
+## LXD/LXC
+LXD es un gestor de contenedores de linux ***LXC***. El exploit consisten en crear en la maquina atacante una imagen con el sistema operativo Alpine (una
+version ligera de Linux) y despues traspasarla a la maquina target (es muy importante hacerlo en el directorio HOME, en este caso /home/cage/ y despues poner en marcha la maquina con el flag security.privileged=true, lo que  nos permitira leer, escribir o ejecutar ficheros con privilegios de root. El 
+proceso esta muy bien explicado en: https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/
+
