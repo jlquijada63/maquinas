@@ -91,3 +91,28 @@ Dos vectores:
 2. En /opt/.dads_scripts hay un ejecutable python que es el responsable de mostrar frases lapidarias de vez en cuando en la pantalla
 Abriendo el ejecutable vemos que ejecuta una instruccion system y que el propietario es cage. Podriamos utilizarlo como medio para aceder
 al usuario cage?
+
+## USUARIO CAGE
+Dentro de /opt/.dads_scripts tenemos un fichero .files y dentro de este otro .quotes (/opt/.dads_scripts/.files/.quotes) que es donde se guardan las
+frases lapidarias (quotes) que se muestran periodicamente en la pantalla. Es fichero lo utiliza el script de python *spread_the_quotes.py* para des
+plegar las frases mediante una llamada al sistema os.system. Podemos aprovechar esta llamada para incluir un reverse shell payload en el fichero .quotes
+Asi conseguimos un reverse shell con el usuario cage
+Dentro de los backups de los correos encontramos una frase rara:
+> haiinspsyanileph
+
+Dentro del directorio /home/cage no se ve explicitamente donde esta el user flag. Para buscarlo como sabemos que tiene que empezar en "THM{", podemos
+buscarlos con el comando
+> $ grep -iRl "THM{" que nos dara el nombre de los archivos donde se den matches con "THM{" en este caso:
+```
+cage@national-treasure:~$ grep -iRl "THM{"
+Super_Duper_Checklist
+cage@national-treasure:~$ cat Super_Duper_Checklist 
+1 - Increase acting lesson budget by at least 30%
+2 - Get Weston to stop wearing eye-liner
+3 - Get a new pet octopus
+4 - Try and keep current wife
+5 - Figure out why Weston has this etched into his desk: THM{M37AL_0R_P3N_T35T1NG}
+```
+Del directorio personal del usuario cage, podemos obtener su clave privada en /home/cage/.ssh/id_rsa
+con esta clave nos podemos logear directamente en ssh. La clave no contiene passphrase.
+# ROOT
