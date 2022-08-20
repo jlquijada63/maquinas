@@ -15,8 +15,9 @@ Hay dos puertos abiertos (22, 3000). Por el puerto 3000 se ejecuta un servicio d
 
 # OSINT
 En github existe una pagina dedicada JPChat que esta gestionada por un usuario llamado *Mozzie-jpg* que contine dos ficheros:
-1: README.txt: No contiene información relevante
-1. jpchat.py: Es un script de python que se supone controla el servicio del JPGChat:
+
+1. README.txt: No contiene información relevante
+2. jpchat.py: Es un script de python que se supone controla el servicio del JPGChat:
 
 ```
 import os
@@ -49,3 +50,8 @@ def chatting_service():
 
 chatting_service()
 ```
+Este script es susceptible de RCE (Remote Command Execution) pues ejecuta (en su modo REPORT) el metodo **system** del modulo **os**
+de python, cuya funcion es ejecutar un commando del sistema operativo
+De esta manera podemos conseguir un reverse shell con el usuario wes
+
+# ENUMERATI
