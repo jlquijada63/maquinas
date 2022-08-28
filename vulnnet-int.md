@@ -38,3 +38,31 @@ Una vez montado accedemos al directorio redis donde existe un fichero **redis.co
 > B65Hx562F@ggAZ@F
 
 ## REDIS WITH PASS
+Tras entrar en redis obtenemos
+redis-cli> keys *
+```
+┌──(kali㉿kali)-[~]
+└─$ redis-cli -h 10.10.21.113 -a B65Hx562F@ggAZ@F
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+10.10.21.113:6379> keys *
+1) "tmp"
+2) "authlist"
+3) "internal flag"
+4) "int"
+5) "marketlist"
+```
+### tmp
+Nada interesante
+### authlist
+Obtenemos este codigo que parece ser un code64:
+> QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg==
+
+### internal flag
+Obtenemos el segundo flag
+THM{ff8e518addbbddb74531a724236a8221}
+
+
+
+
+
+
