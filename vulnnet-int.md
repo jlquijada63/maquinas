@@ -76,6 +76,10 @@ y despues logearnos en ssh con nuestra clave privada
 └─$ ssh -i id_rsa sys-internal@vulnnet.thm 
 y ya estamos en la maquina target con el usuario **sys-internal**
 
+# Escalada de privilegios
+
+
+
 
 
 
