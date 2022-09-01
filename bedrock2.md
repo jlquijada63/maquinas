@@ -39,4 +39,21 @@ Para acceder al servidor utilizamos openssl:
 Con las anteriores credenciales intento logearme en ssh pero el password no me sirve ¿Estará codificado?
 Pues no, se trata del password en plain text. El problema es que el usuario no es 'Barney Rubble' si no barney. Asi si puedo
 > $ ssh barney@bedrock.thm
+
+  ## privilege escalation
+  vemos que barney puede ejecutar el comando /usr/bin/certutil con sudo
+ ```
+  barney@b3dr0ck:/etc$ sudo -l                                                                                                                                 
+Matching Defaults entries for barney on b3dr0ck:                                                                                                             
+    insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin                               
+                                                                                                                                                             
+User barney may run the following commands on b3dr0ck:                                                                                                       
+  (ALL : ALL) /usr/bin/certutil 
+ ```
+ Entonces podemos utilizar este comando para crear una nueva clave publica y privada para Fred Flinstone:
+ > sudo /usr/bin/certutil fred  'Fred Flintstone"
+ Con esto podemos otra vez conectar con el servidor en el puerto 54321
+ e igual que hicimos antes conseguir el user y el password de Fred:
+ user: fred
+ pass: YabbaDabbaD0000!
  
