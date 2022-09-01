@@ -73,5 +73,14 @@ User fred may run the following commands on b3dr0ck:
  con lo cual obtenemos:
  base32: JRDEWRKDGUZFUS2SINMFGV2LLBEVUVSVGQZUWSSHJZGVQVKSJJJUYRSXKZJTKMSPKBFECWCVKRGE
 4SSKKZKTEUSDK5HEER2YKVJFITCKLJFUMU2TLFFQU===
+  
  base64: TEZLRUM1MlpLUkNYU1dLWElaVlU0M0tKR05NWFVSSlNMRldWUzUyT1BKQVhVVExOSkpWVTJSQ1dO
 QkdYVVJUTEpaS0ZTU1lLCg==
+  
+Como nos dice el consejo es multidecoding
+ - Decodificamos con base64
+ - Decodificamoe con base32
+ - Por ultimo volvemos a decodificar con base64
+y obtenemos un hash
+a00a12aad6b7c16bf07032bd05a31d56
+que resulta ser un hash md5 que no puedo crackear con JtR pero si con crackstation
