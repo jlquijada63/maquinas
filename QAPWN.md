@@ -30,6 +30,8 @@ Existen dos funciones que nos interesan:
 
 1. main
 
+
+
 ```
    0x00000000004006c3 <+0>:     push   rbp
    0x00000000004006c4 <+1>:     mov    rbp,rsp
@@ -58,7 +60,7 @@ Existen dos funciones que nos interesan:
    0x000000000040072e <+107>:   leave  
    0x000000000040072f <+108>:   ret    
 ```
-Esta funcion realmente no hace nada
+Esta funcion realmente no hace nada. Es un banner donde se nos solicita el nombre y con el nombre que introducimos nos manda un saludo
 2. vuln
 
 ```
@@ -78,5 +80,29 @@ Esta funcion realmente no hace nada
    0x00000000004006c1 <+59>:    pop    rbp
    0x00000000004006c2 <+60>:    ret    
 ```
+Esta funcion es la mas importante porque cuando se entra en ella se hace ejecuta un shell (/bin/bash):
+>  0x00000000004006bc <+54>:    call   0x400550 <execve@plt>
+
+El problema es que la funcion vuln parece estar totalmente desconectada de la funcion main, ya que en ningun momento en la funcion main se hace una llamada a la funcion vuln. ¿Como resolvemos esto?
+La respuesta esta en crear un **buffer overflow** y aprovecharnos de como se organiza la pila (stack) para redirigir la salida de la funcion main a la funcion vuln, de forma que al terminar la funcion main se ejecute la funcion vuln
+
+# ORGANIZACION DE LA PILA
+
+Stack se organiza de la siguiente manera:
+
+```
+variables locales
+rbp (registro base pointer o frame pointer)
+rip (Se guarda la direccion de retorno para cuando acabe de ejecutarse la funcion)
+argumentos (los argumentos de llamada de la funcion -en este caso no tiene-)
+
+```
+
+En este caso podemos provocar un buffer overflow de forma que la direccion de la pila donde se guarda la direccion de retorno se reescriba con
+la dirección de entrada en la funcion vuln que es:
+
+>0x0000000000400686
+
+
 
 
