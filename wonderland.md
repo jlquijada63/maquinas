@@ -11,4 +11,9 @@ PORT   STATE SERVICE VERSION
 80/tcp open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
 |_http-title: Follow the white rabbit.
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
 ```
+
+## Enumeration
+
+alice:HowDothTheLittleCrocodileImproveHisShiningTail
