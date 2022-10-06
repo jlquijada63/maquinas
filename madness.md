@@ -23,3 +23,7 @@ que contiene el nombre de usuario:
 
 ##ssh
 Asi me puedo logear en ssh con las credenciales wbxre:y2RPJ4QaPF!B
+Pero estas no son las credenciales para logearse en ssh.
+El username wbxre esta codificado con ROT 13 y es joker
+El password nos sirve para extraer de la imagen el verdadero password que es:
+*axA&GF8dP
