@@ -14,5 +14,12 @@ Es decir hay un directorio oculto que es:
 /th1s_1s_h1dd3n
 
 Si hacemos un fuzz a 
->http://madness.thm/th1s_1s_h1dd3n/?secret= vemos que cuando introducirmos 73 nos aparece una pagina con una palabra rara:
+http://madness.thm/th1s_1s_h1dd3n/?secret= vemos que cuando introducirmos 73 nos aparece una pagina con una palabra rara:
 >y2RPJ4QaPF!B
+
+Despues de probar en cyberchef sin exito creo que esto es en si un password. Lo utilizo con steghide en la imagen thm.jpg y obtengo un fichero hidden.txt
+que contiene el nombre de usuario:
+>wbxre
+
+##ssh
+Asi me puedo logear en ssh con las credenciales wbxre:y2RPJ4QaPF!B
