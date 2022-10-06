@@ -12,3 +12,7 @@ En la url http://madness.thm podemos ver la pagina inicial del servidor apache a
 file:///home/kali/maquinas/madness/thm.jpg![image](https://user-images.githubusercontent.com/70599089/194276155-07c36fce-0622-4cb8-9713-2e147f22f748.png)
 Es decir hay un directorio oculto que es:
 /th1s_1s_h1dd3n
+
+Si hacemos un fuzz a 
+>http://madness.thm/th1s_1s_h1dd3n/?secret= vemos que cuando introducirmos 73 nos aparece una pagina con una palabra rara:
+>y2RPJ4QaPF!B
